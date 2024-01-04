@@ -8,14 +8,14 @@ if __name__ == "__main__":
     result = 0
 
     if len(sys.argv) != 4:
-        print("usage: ./100-my_calculator.py <a> <operator> <b>")
-        exit(1)
+        print("Usage: ./100-my_calculator.py <a> <operator> <b>")
+        sys.exit(1)
     op = sys.argv[2]
     a = int(sys.argv[1])
     b = int(sys.argv[3])
     if op != "+" and op != "-" and op != "*" and op != "/":
         print("Unkown operator. Available operators: +, -, * and /")
-        exit(1)
+        sys.exit(1)
     if op == "+":
         result = add(a, b)
     elif op == "-":

@@ -14,7 +14,7 @@ if __name__ == "__main__":
     a = int(sys.argv[1])
     b = int(sys.argv[3])
     if op != "+" and op != "-" and op != "*" and op != "/":
-        print("Unkown operator. Available operators: +, -, * and /")
+        print("Unknown operator. Available operators: +, -, * and /")
         sys.exit(1)
     if op == "+":
         result = add(a, b)

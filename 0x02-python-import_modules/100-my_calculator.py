@@ -24,4 +24,4 @@ if __name__ == "__main__":
         result = mul(a, b)
     else:
         result = div(a, b)
-    print("{:d} {:s} {:d} = {:d}".format(a, op, b, result))
+    print("{} {} {} = {}".format(a, op, b, result))

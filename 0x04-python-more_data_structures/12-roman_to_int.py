@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 
 def roman_to_int(roman_string):
-    roman_string = roman_string.upper()
-    roman_numeral_map = {
+    r_str = roman_string.upper()
+    r_map = {
             "I": 1,
             "V": 5,
             "X": 10,
@@ -11,15 +11,10 @@ def roman_to_int(roman_string):
             "D": 500,
             "M": 1000
     }
-    prev = 0
-    result = 0
-    for r in roman_string:
-        value = roman_numeral_map[r]
-        if value is None:
-            return None
-        if value > prev:
-            result += value - (2 * prev)
+    init_val = 0
+    for i in range(len(r_str)):
+        if i > 0 and r_map[r_str[i]] > r_map[r_str[i - 1]]:
+            init_val += r_map[r_str[i]] - 2 * r_map[r_str[i - 1]]
         else:
-            result += value
-        prev = value
-    return result
+            init_val += r_map[r_str[i]]
+    return init_val

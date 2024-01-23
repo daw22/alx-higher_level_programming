@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-#0-square.py by Dawit yifru
+# 0-square.py by Dawit yifru
 """Define a square class"""
 
 

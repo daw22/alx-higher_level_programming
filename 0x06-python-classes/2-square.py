@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+# 2-square.py by Dawit yifru
 """Defines a square class"""
 
 

@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+# 1-square.py by Dawit yifru
 """A square class defunation"""
 
 

@@ -1,0 +1,38 @@
+tests a function tha takes first and last name strings
+and prints out greeting
+======================================================
+>>> say_my_name = __import__("3-say_my_name").say_my_name
+
+check if a string is passed for firstname and lastname
+
+>>> say_my_name(1, "peter")
+Traceback (most recent call last):
+TypeError: first_name must be a string
+
+>>> say_my_name("peter", 1)
+Traceback (most recent call last):
+TypeError: last_name must be a string
+
+>>> say_my_name("Alex", "perera")
+My name is Alex perera
+
+>>> say_my_name("Alex")
+My name is Alex 
+
+teating with invalid params
+
+>>> say_my_name("peter", ["peter"])
+Traceback (most recent call last):
+TypeError: last_name must be a string
+
+>>> say_my_name({"name": "peter"}, 12)
+Traceback (most recent call last):
+TypeError: first_name must be a string
+
+>>> say_my_name(None)
+Traceback (most recent call last):
+TypeError: first_name must be a string
+
+>>> say_my_name()
+Traceback (most recent call last):
+TypeError: say_my_name() missing 1 required positional argument: 'first_name'

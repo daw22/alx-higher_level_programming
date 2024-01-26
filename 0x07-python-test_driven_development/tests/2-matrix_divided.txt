@@ -1,8 +1,6 @@
 tests a function that divides every element of a matrix
 by a number and returns a new matrix
 =======================================================
->>> import sys
->>> sys.path.insert(1, "../")
 >>> matrix_divided = __import__("2-matrix_divided").matrix_divided
 
 >>> matrix_divided([[1, 2], [1, 2]], 'q')
@@ -25,6 +23,31 @@ checking if matrix is a list of lists of integers or floats
 Traceback (most recent call last):
 TypeError: matrix must be a matrix (list of lists) of integers/floats
 
+checking with non list argument
+===============================
+>>> matrix = "Hello"
+>>> matrix_divided(matrix, 2)
+Traceback (most recent call last):
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+checking with an empty list
+===========================
+>>> matrix_divided([], 2)
+Traceback (most recent call last):
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+checking with matrix of empty list
+==================================
+>>> matrix_divided([[]], 2)
+[[]]
+
 >>> matrix = [[1, 2, 3],[4, 5, 6]]
 >>> matrix_divided(matrix, 3)
 [[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
+
+>>> matrix = [
+...	[1.23, 4.4623, 6],
+...	[2.2, 12, -4.6]
+...	]
+>>> matrix_divided(matrix, 2)
+[[0.61, 2.23, 3.0], [1.1, 6.0, -2.3]]

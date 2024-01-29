@@ -6,7 +6,7 @@ A Basic class Defination
 """
 
 
-def Rectangle:
+class Rectangle:
     """
     An empty class that represents a rectangle
     """

@@ -1,5 +1,4 @@
-#!usr/bin/python3
-# 3-say_my_name.py by Dawit Yifru
+#!/usr/bin/python3
 """
 module with a function that prints out given
 first and last name

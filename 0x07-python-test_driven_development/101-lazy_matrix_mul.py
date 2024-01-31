@@ -1,4 +1,4 @@
-#!/usr/bin/ppython3
+#!/usr/bin/python3
 """
 matrix multiplication using Numpy
 

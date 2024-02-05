@@ -4,7 +4,7 @@ contains a empty class
 """
 
 
-class BaseGeometr:
+class BaseGeometry:
     """
     Empty BaseGeometry class
     """

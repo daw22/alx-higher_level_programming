@@ -10,6 +10,16 @@ Expcted to work with no error
 
 >>> bg.integer_validator("width", 15);
 
+checking for module docstring:
+         >>> m = __import__("7-base_geometry").__doc__
+         >>> len(m) > 1
+         True
+
+Checking for class docstring:
+         >>> c = __import__("7-base_geometry").BaseGeometry.__doc__
+         >>> len(c) > 1
+         True
+
 Expect exceptions to be raised
 
 >>> bg.integer_validator("name", "jhon")

@@ -11,7 +11,7 @@ def pascal_triangle(n):
     Args:
         n: height of triangle
     """
-    if n < 0:
+    if n <= 0:
         return []
     lists = [[1]]
     while n != len(lists):

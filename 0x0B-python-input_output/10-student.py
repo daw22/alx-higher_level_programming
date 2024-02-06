@@ -23,11 +23,11 @@ class Student:
     def to_json(self, attrs=None):
         """
         returns a dictionary representation of a student
-        object if attrs is listof strings that 
+        object if attrs is listof strings that
         represents ony thoes attributes included in
         the list
         """
-        if (type(attrs) == list and
-                all(type(item) == str for item in attrs)):
+        if (type(attrs) is list and
+                all(type(item) is str for item in attrs)):
             return {a: getattr(self, a) for a in attrs if hasattr(self, a)}
         return self.__dict__

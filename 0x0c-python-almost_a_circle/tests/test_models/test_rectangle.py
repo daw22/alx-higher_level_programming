@@ -145,7 +145,7 @@ class test_rectangle(unittest.TestCase):
         self.assertEqual(rec.__str__(), "[Rectangle] (120) 5/10 - 11/12")
 
     # test update method
-    def test_update(self):
+    def test_update_0(self):
         """
         test update method
         """
@@ -171,3 +171,34 @@ class test_rectangle(unittest.TestCase):
 
         rec.update(300, 30, 50, 10, 20)
         self.assertEqual(rec.y, 20)
+
+    def test_update_1(self):
+        """
+        tests modified update method with **kwargs
+        """
+        rec = Rectangle(10, 20, 2, 3, 100)
+        rec.update(200, 15, 25, 5, 6)
+        self.assertEqual(rec.id, 200)
+        self.assertEqual(rec.width, 15)
+        self.assertEqual(rec.height, 25)
+        self.assertEqual(rec.x, 5)
+        self.assertEqual(rec.y, 6)
+
+        rec.update(id=111)
+        self.assertEqual(rec.id, 111)
+
+        rec.update(width=50)
+        self.assertEqual(rec.width, 50)
+
+        rec.update(height=75)
+        self.assertEqual(rec.height, 75)
+
+        rec.update(x=9)
+        self.assertEqual(rec.x, 9)
+
+        rec.update(y=11)
+        self.assertEqual(rec.y, 11)
+
+        rec.update(333, y=22)
+        self.assertEqual(rec.id, 333)
+        self.assertEqual(rec.y, 11)

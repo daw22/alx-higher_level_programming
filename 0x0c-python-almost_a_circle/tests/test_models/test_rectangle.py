@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 import unittest
 from models.rectangle import Rectangle
+from io import StringIO
+import sys
 """
 test_rectangle.py
 """
@@ -101,3 +103,43 @@ class test_rectangle(unittest.TestCase):
             rec = Rectangle()
         with self.assertRaises(TypeError):
             rec = Rectangle(1)
+
+    # test area func
+    def test_area(self):
+        """
+        test the area function
+        """
+        self.assertEqual(self.rec.area(), 200)
+
+    # test display_rec
+    def test_display(self):
+        """
+        tests display(without x and y)
+        """
+        strio = StringIO()
+        sys.stdout = strio
+        rec = Rectangle(2,4)
+        rec.display()
+        sys.stdout = sys.__stdout__
+        result = "##\n##\n##\n##\n"
+        self.assertEqual(result, strio.getvalue())
+
+    def test_display_x_y(self):
+        """
+        test display(wiht x and y)
+        """
+        strio = StringIO()
+        sys.stdout = strio
+        rec = Rectangle(3, 2, 2, 3)
+        rec.display()
+        sys.stdout = sys.__stdout__
+        result = "\n\n\n  ###\n  ###\n"
+        self.assertEqual(result, strio.getvalue())
+
+    # test __str__() overite
+    def tesr_str(self):
+        """
+        tests __str__() output
+        """
+        rec = Rectangle(11, 12, 5, 10, 120)
+        self.assertEqual(rec.__str__(), "[Rectangle] (120) 5/10 - 11/12")

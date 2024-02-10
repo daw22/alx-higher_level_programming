@@ -118,7 +118,7 @@ class test_rectangle(unittest.TestCase):
         """
         strio = StringIO()
         sys.stdout = strio
-        rec = Rectangle(2,4)
+        rec = Rectangle(2, 4)
         rec.display()
         sys.stdout = sys.__stdout__
         result = "##\n##\n##\n##\n"
@@ -143,3 +143,31 @@ class test_rectangle(unittest.TestCase):
         """
         rec = Rectangle(11, 12, 5, 10, 120)
         self.assertEqual(rec.__str__(), "[Rectangle] (120) 5/10 - 11/12")
+
+    # test update method
+    def test_update(self):
+        """
+        test update method
+        """
+        rec = Rectangle(10, 20, 2, 3, 100)
+        rec.update(200, 15, 25, 5, 6)
+        self.assertEqual(rec.id, 200)
+        self.assertEqual(rec.width, 15)
+        self.assertEqual(rec.height, 25)
+        self.assertEqual(rec.x, 5)
+        self.assertEqual(rec.y, 6)
+
+        rec.update(300)
+        self.assertEqual(rec.id, 300)
+
+        rec.update(300, 30)
+        self.assertEqual(rec.width, 30)
+
+        rec.update(300, 30, 50)
+        self.assertEqual(rec.height, 50)
+
+        rec.update(300, 30, 50, 10)
+        self.assertEqual(rec.x, 10)
+
+        rec.update(300, 30, 50, 10, 20)
+        self.assertEqual(rec.y, 20)

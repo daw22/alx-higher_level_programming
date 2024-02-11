@@ -19,11 +19,11 @@ class Rectangle(Base):
             y: position of the rectangle on y co-ordinate
             id: id of the instance
         """
-        super().__init__(id)
         self.width = width
         self.height = height
         self.x = x
         self.y = y
+        super().__init__(id)
 
     @property
     def width(self):
@@ -151,3 +151,13 @@ class Rectangle(Base):
                     self.x = v
                 elif k == "y":
                     self.y = v
+
+    def to_dictionary(self):
+        """
+        returns the dictionary representation of
+        the class
+        """
+        dict_obj = {"id": self.id, "width": self.__width,
+                   "height": self.__height, "x": self.__x,
+                   "y": self.__y}
+        return dict_obj

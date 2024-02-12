@@ -158,6 +158,6 @@ class Rectangle(Base):
         the class
         """
         dict_obj = {"id": self.id, "width": self.__width,
-                   "height": self.__height, "x": self.__x,
-                   "y": self.__y}
+                    "height": self.__height, "x": self.__x,
+                    "y": self.__y}
         return dict_obj

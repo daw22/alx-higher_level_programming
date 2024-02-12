@@ -47,3 +47,27 @@ class Base():
             else:
                 l_dict = [l.to_dictionary() for l in list_objs]
                 jfile.write(Base.to_json_string(l_dict))
+
+    @staticmethod
+    def from_json_string(json_string):
+        """
+        returns a list of dict from json string
+        """
+        dict_list = []
+        if json_string is not None and json_string != "":
+            if not isinstance(json_string, str):
+                raise TypeError("json_string must be a string")
+            dict_list = json.loads(json_string)
+        return dict_list
+
+    @classmethod
+    def create(cls, **dictionary):
+        """
+        creates an intance with all attrs set
+        """
+        if cls.__name__ == "Rectangle":
+            dummy = cls(10, 20)
+        if cls.__name__ == "Square":
+            dummy = cls(10);
+        dummy.update(**dictionary)
+        return dummy

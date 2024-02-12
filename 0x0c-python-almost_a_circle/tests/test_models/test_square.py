@@ -224,3 +224,31 @@ class test_rectangle(unittest.TestCase):
         """
         with self.assertRaises(TypeError):
             Square.save_to_file(self.sqr)
+
+    def test_from_json_string(self):
+        """
+        test from json_string
+        """
+        sqr1 = Square(10, 2, 2, 101)
+        sqr2 = Square(5, 1, 1, 202)
+        sqr_dict1 = sqr1.to_dictionary()
+        sqr_dict2 = sqr2.to_dictionary()
+        sqr_str = Square.to_json_string([sqr_dict1, sqr_dict2])
+        sqr_dict_list = Square.from_json_string(sqr_str)
+
+        self.assertEqual(type(sqr_dict_list), list)
+        self.assertEqual(sqr_dict_list, [sqr_dict1, sqr_dict2])
+        self.assertEqual(sqr_dict_list[0], sqr_dict1)
+        self.assertEqual(sqr_dict_list[1], sqr_dict2)
+
+    def test_creat_from_dict(self):
+        """
+        tests create
+        """
+        sqr = Square(10)
+        sqr_dict = sqr.to_dictionary()
+        sqr1 = Square.create(**sqr_dict)
+
+        self.assertIsNot(sqr, sqr1)
+        self.assertNotEqual(sqr, sqr1)
+        self.assertEqual(sqr.size, sqr1.size)

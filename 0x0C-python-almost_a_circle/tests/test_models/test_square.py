@@ -252,3 +252,13 @@ class test_rectangle(unittest.TestCase):
         self.assertIsNot(sqr, sqr1)
         self.assertNotEqual(sqr, sqr1)
         self.assertEqual(sqr.size, sqr1.size)
+
+    def test_load_from_file(self):
+        """
+        tests load_from_file
+        """
+        sqr = Square(10, 2, 2, 404)
+        Square.save_to_file([sqr])
+
+        loaded = Square.load_from_file()
+        self.assertEqual(sqr.size, loaded[0].size)

@@ -31,8 +31,8 @@ class Base():
         """
         if list_dictionaries is None or list_dictionaries == []:
             return "[]"
-        if (type(list_dictionaries) != list or not
-                all(type(d) == dict for d in list_dictionaries)):
+        if (not isinstance(list_dictionaries, list) or
+                not all(isinstance(d, dict) for d in list_dictionaries)):
             raise TypeError("list_dictionaries must be a list of dictionaries")
         return json.dumps(list_dictionaries)
 
@@ -46,8 +46,8 @@ class Base():
             if list_objs is None:
                 jfile.write("[]")
             else:
-                l_dict = [l.to_dictionary() for l in list_objs]
-                jfile.write(Base.to_json_string(l_dict))
+                dict_l = [lst.to_dictionary() for lst in list_objs]
+                jfile.write(Base.to_json_string(dict_l))
 
     @staticmethod
     def from_json_string(json_string):
@@ -69,7 +69,7 @@ class Base():
         if cls.__name__ == "Rectangle":
             dummy = cls(10, 20)
         if cls.__name__ == "Square":
-            dummy = cls(10);
+            dummy = cls(10)
         dummy.update(**dictionary)
         return dummy
 

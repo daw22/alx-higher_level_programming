@@ -3,6 +3,7 @@ import unittest
 from models.square import Square
 from io import StringIO
 import sys
+import json
 """
 test_square.py
 """
@@ -196,3 +197,30 @@ class test_rectangle(unittest.TestCase):
         sqr_dict = sqr.to_dictionary()
 
         self.assertEqual(sqr_dict, {"id": 111, "size": 5, "x": 0, "y": 2})
+
+    def test_save_to_file(self):
+        """
+        tests save_to_file parent class function
+        """
+        sqr = Square(10, 5, 2, 777)
+        Square.save_to_file([sqr])
+        with open("Square.json", "r") as sqr_f:
+            text = sqr_f.read()
+        exp = [{"id": 777, "size": 10, "x": 5, "y": 2}]
+        self.assertEqual(exp, json.loads(text))
+
+    def test_save_to_file_none(self):
+        """
+        tests save_to_file func with None
+        """
+        Square.save_to_file(None)
+        with open("Square.json", "r") as sqr_f:
+            text = sqr_f.read()
+        self.assertEqual(text, "[]")
+
+    def test_save_file_none_list(self):
+        """
+        test save_to_file with non list
+        """
+        with self.assertRaises(TypeError):
+            Square.save_to_file(self.sqr)

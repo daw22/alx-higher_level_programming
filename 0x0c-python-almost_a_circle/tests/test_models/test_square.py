@@ -180,3 +180,19 @@ class test_rectangle(unittest.TestCase):
         sqr.update(333, y=22)
         self.assertEqual(sqr.id, 333)
         self.assertEqual(sqr.y, 11)
+
+    def test_to_dictionary(self):
+        """
+        tests to_dict func return type
+        """
+        sqr = Square(10)
+        self.assertEqual(type(sqr.to_dictionary()), dict)
+
+    def test_to_dictionary_ret(self):
+        """
+        tests the output of to_dictionary func
+        """
+        sqr = Square(5, 0, 2, 111)
+        sqr_dict = sqr.to_dictionary()
+
+        self.assertEqual(sqr_dict, {"id": 111, "size": 5, "x": 0, "y": 2})

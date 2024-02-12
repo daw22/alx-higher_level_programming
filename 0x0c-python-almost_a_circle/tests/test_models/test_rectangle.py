@@ -202,3 +202,19 @@ class test_rectangle(unittest.TestCase):
         rec.update(333, y=22)
         self.assertEqual(rec.id, 333)
         self.assertEqual(rec.y, 11)
+
+    def test_to_dictionary(self):
+        """
+        tests return type of to_dictionary func
+        """
+        rec = Rectangle(10, 20)
+        self.assertEqual(type(rec.to_dictionary()), dict)
+
+    def test_to_dictionary_ret(self):
+        """
+        tests the return value of to_dictionary func
+        """
+        rec = Rectangle(10, 20, 5, 6, 222)
+        rec_dict = rec.to_dictionary()
+        self.assertEqual(rec_dict, {"width": 10, "height": 20,
+                                    "x": 5, "y": 6, "id": 222})

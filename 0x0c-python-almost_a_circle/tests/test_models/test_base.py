@@ -1,7 +1,9 @@
 #!/usr/bin/python3
 import unittest
+import json
 from models.base import Base
-
+from models.rectangle import Rectangle
+from models.square import Square
 """
 Unit test for the base module
 """
@@ -52,7 +54,7 @@ class test_base(unittest.TestCase):
         """
         base = Base("Hello")
         self.assertEqual(base.id, "Hello")
-    
+
     def test_base_list(self):
         """
         testing Base init with list arg
@@ -69,8 +71,34 @@ class test_base(unittest.TestCase):
 
     def test_base_tuple(self):
         """
-        testing Base init with tupel arg
+        testing Base init with tuple arg
         """
         base = Base((1, 2, 3))
         self.assertEqual(base.id, (1, 2, 3))
 
+    def test_to_json_none(self):
+        """
+        tests to_json_string with none
+        """
+        json_str = Base.to_json_string(None)
+        self.assertEqual(json_str, "[]")
+
+    def test_to_json_type(self):
+        """
+        tests return type of to_json_string func
+        """
+        sqr = Square(5)
+        sqr_dict = sqr.to_dictionary()
+        sqr_json = Base.to_json_string([sqr_dict])
+        self.assertEqual(type(sqr_json), str)
+
+    def test_to_json_ret(self):
+        """
+        tests return value of to_json_string func
+        """
+        rec = Rectangle(10, 20, 2, 4, 444)
+        rec_dict = rec.to_dictionary()
+        rec_json = Base.to_json_string([rec_dict])
+        self.assertEqual(json.loads(rec_json),
+                         [{"id": 444, "y": 4, "x": 2, "width": 10,
+                           "height": 20}])

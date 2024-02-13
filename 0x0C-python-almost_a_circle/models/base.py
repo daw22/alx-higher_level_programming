@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-base.py
+base.py - this class is a base class
+for other classes
 """
 
 
@@ -10,7 +11,8 @@ from pathlib import Path
 
 class Base():
     """
-    This is a Base class
+    This is a Base class that is used
+    for keeping a universal id attribute
     """
     __nb_objects = 0
 

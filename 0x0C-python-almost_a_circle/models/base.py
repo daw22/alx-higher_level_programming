@@ -13,7 +13,11 @@ class Base():
     __nb_objects = 0
 
     def __init__(self, id=None):
-        """ constructor """
+        """ constructor for the base class
+        Args:
+            id: id for each instances of base and 
+                it's subclasses
+        """
         if id is not None:
             self.id = id
         else:

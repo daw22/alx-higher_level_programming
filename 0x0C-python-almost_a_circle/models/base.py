@@ -1,8 +1,6 @@
 #!/usr/bin/python3
-"""
-base.py - this class is a base class
-for other classes
-"""
+"""base.py - this class is a base class
+for other classes"""
 
 
 import json
@@ -10,14 +8,12 @@ from pathlib import Path
 
 
 class Base():
-    """
-    This is a Base class that is used
-    for keeping a universal id attribute
-    """
+    """This is a Base class that is used
+    for keeping a universal id attribute"""
     __nb_objects = 0
 
     def __init__(self, id=None):
-        """  """
+        """ constructor """
         if id is not None:
             self.id = id
         else:
@@ -26,9 +22,8 @@ class Base():
 
     @staticmethod
     def to_json_string(list_dictionaries):
-        """
-        returns json representaion of list_dictionaries
-        """
+        """returns json representaion of 
+        list_dictionaries"""
         if list_dictionaries is None or list_dictionaries == []:
             return "[]"
         if (not isinstance(list_dictionaries, list) or
@@ -38,9 +33,7 @@ class Base():
 
     @classmethod
     def save_to_file(cls, list_objs):
-        """
-        save json string rep of list_objcts to a file
-        """
+        """save json string rep of list_objcts to a file"""
         f_name = cls.__name__ + ".json"
         with open(f_name, "w") as jfile:
             if list_objs is None:
@@ -51,9 +44,7 @@ class Base():
 
     @staticmethod
     def from_json_string(json_string):
-        """
-        returns a list of dict from json string
-        """
+        """returns a list of dict from json string"""
         dict_list = []
         if json_string is not None and json_string != "":
             if not isinstance(json_string, str):
@@ -63,9 +54,7 @@ class Base():
 
     @classmethod
     def create(cls, **dictionary):
-        """
-        creates an intance with all attrs set
-        """
+        """creates an intance with all attrs set"""
         if cls.__name__ == "Rectangle":
             dummy = cls(10, 20)
         if cls.__name__ == "Square":
@@ -75,9 +64,7 @@ class Base():
 
     @classmethod
     def load_from_file(cls):
-        """
-        loads instances from a file
-        """
+        """loads instances from a file"""
         f_name = cls.__name__ + ".json"
         dict_list = []
         inst_list = []

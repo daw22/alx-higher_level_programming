@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-"""Module base.
-Defines a Base class for other classes in the project.
+"""Base module
+Defines a Base class for other classes to inherit from.
 """
 
 import json
@@ -9,20 +9,21 @@ import csv
 
 
 class Base:
-    """Class with:
-    Private class attribute: __nb_objects
+    """Base class with a
+    Private class attribute __nb_objects
     """
 
     __nb_objects = 0
 
     def __init__(self, id=None):
-        """Initialization of a Base instance.
+        """Constructor for a Base instance.
 
         Args:
-            - id: id of the instance
+            - id: assigns an id for instances of base and it's
+                  subclasses
         """
 
-        if type(id) != int and id is not None:
+        if not isinstance(id, int) and id is not None:
             raise TypeError("id must be an integer")
         if id is not None:
             self.id = id
@@ -42,8 +43,8 @@ class Base:
 
         if list_dictionaries is None or list_dictionaries == []:
             return "[]"
-        if (type(list_dictionaries) != list or
-           not all(type(x) == dict for x in list_dictionaries)):
+        if (not isinstance(list_dictionaries, list) or
+           not all(isinstance(x, dict) for x in list_dictionaries)):
             raise TypeError("list_dictionaries must be a list of dictionaries")
         return json.dumps(list_dictionaries)
 
@@ -67,7 +68,7 @@ class Base:
             jstr = cls.to_json_string([o.to_dictionary() for o in list_objs])
         filename = cls.__name__ + ".json"
         with open(filename, 'w') as f:
-                f.write(jstr)
+            f.write(jstr)
 
     @staticmethod
     def from_json_string(json_string):
@@ -77,12 +78,12 @@ class Base:
             - json_string: string to convert to list
         """
 
-        l = []
+        lst = []
         if json_string is not None and json_string != '':
-            if type(json_string) != str:
+            if not isinstance(json_string, str):
                 raise TypeError("json_string must be a string")
-            l = json.loads(json_string)
-        return l
+            lst = json.loads(json_string)
+        return lst
 
     @classmethod
     def create(cls, **dictionary):
@@ -105,15 +106,15 @@ class Base:
         """Returns a list of instances."""
 
         filename = cls.__name__ + ".json"
-        l = []
+        lst = []
         list_dicts = []
         if os.path.exists(filename):
             with open(filename, 'r') as f:
                 s = f.read()
                 list_dicts = cls.from_json_string(s)
                 for d in list_dicts:
-                    l.append(cls.create(**d))
-        return l
+                    lst.append(cls.create(**d))
+        return lst
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
@@ -124,7 +125,7 @@ class Base:
             - list_objs: list of instances
         """
 
-        if (type(list_objs) != list and
+        if (not isinstance(list_objs, list) and
            list_objs is not None or
            not all(isinstance(x, cls) for x in list_objs)):
             raise TypeError("list_objs must be a list of instances")
@@ -149,7 +150,7 @@ class Base:
         """
 
         filename = cls.__name__ + ".csv"
-        l = []
+        lst = []
         if os.path.exists(filename):
             with open(filename, 'r') as f:
                 reader = csv.reader(f, delimiter=',')
@@ -163,8 +164,8 @@ class Base:
                         for j, e in enumerate(row):
                             if e:
                                 setattr(i, fields[j], int(e))
-                        l.append(i)
-        return l
+                        lst.append(i)
+        return lst
 
     @staticmethod
     def draw(list_rectangles, list_squares):

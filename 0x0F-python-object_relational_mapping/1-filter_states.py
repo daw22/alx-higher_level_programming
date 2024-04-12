@@ -17,7 +17,9 @@ def main():
             passwd=sys.argv[2],
             db=sys.argv[3])
     c = db.cursor()
-    c.execute("""SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC""")
+    c.execute("""SELECT * FROM states
+                 WHERE name LIKE BINARY 'N%'
+                 ORDER BY id ASC""")
     results = c.fetchall()
     for item in results:
         print(item)

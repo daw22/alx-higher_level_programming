@@ -3,4 +3,4 @@
 #- and display the size of the body of the responce
 
 
-curl -sI "$1" | grep -i content-Length | cur -d' ' -f2-
+curl -s "$1" | wc -c

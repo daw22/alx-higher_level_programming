@@ -1,4 +1,3 @@
-#!/usr/bin/env bash
+#!/bin/bash
 # sends a get request with a header
-
-curl -H "X-School-User-Id: 98" "$1"
+curl -sH "X-School-User-Id: 98" "$1"

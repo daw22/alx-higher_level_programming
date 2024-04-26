@@ -18,4 +18,4 @@ if __name__ == "__main__":
         else:
             print("[{}] {}".format(j_data.get("id"), j_data.get("name")))
     except Exception:
-        print("Not a valid Json")
+        print("Not a valid JSON")

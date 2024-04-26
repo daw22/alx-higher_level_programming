@@ -8,10 +8,10 @@ if __name__ == "__main__":
     import requests
     import sys
 
-    owner = sys.argv[1]
-    repo = sys.argv[2]
+    repo = sys.argv[1]
+    owner = sys.argv[2]
 
-    url = "https://api.github.com/repos/{}/{}/commits".format(repo, owner)
+    url = "https://api.github.com/repos/{}/{}/commits".format(owner, repo)
     r = requests.get(url)
     commits = r.json()
     for i in range(0, 10):

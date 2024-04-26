@@ -4,7 +4,7 @@ Task #8- Search api
 """
 
 
-if __name__ = "__main__":
+if __name__ == "__main__":
     import sys
     import requests
 

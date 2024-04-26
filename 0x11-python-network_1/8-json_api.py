@@ -6,7 +6,7 @@ Task #8- Search api
 
 if __name__ = "__main__":
     import sys
-    import requsts
+    import requests
 
     url = "http://0.0.0.0:5000/search_user"
     query = "" if len(sys.argv) == 1 else sys.argv[1]
